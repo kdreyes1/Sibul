@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sibul/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sibul/views/searchPlants.dart';
+import 'package:sibul/views/components/RandomPlants.dart';
 
 
 class HeaderWithSearch extends StatelessWidget {
@@ -10,6 +13,13 @@ class HeaderWithSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var focusNode = FocusNode(onKey: (node, event) {
+    if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+        
+    }
+    return false;
+
+    }); 
     return Container(
       margin: EdgeInsets.only(bottom: 12 * 2.5),
       child: Stack(children: [
@@ -50,6 +60,13 @@ class HeaderWithSearch extends StatelessWidget {
               ],
             ),
             child: TextField(
+              focusNode: focusNode,
+              textInputAction: TextInputAction.search,
+              onSubmitted: (value){
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context)=> SearchPlants(value))
+                );
+              },
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(20),
                 hintText: 'Search',
