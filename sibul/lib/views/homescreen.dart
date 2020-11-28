@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sibul/constants.dart';
 import 'package:sibul/views/components/header_search.dart';
+import 'package:sibul/views/components/RandomPlants.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -26,6 +27,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          RandomPlants()
         ],
       ),
     );
